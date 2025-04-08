@@ -43,7 +43,7 @@ fetch(newsUrl)
   })
   .catch(err => {
     console.error("ニュース取得エラー:", err);
-    document.getElementById("news-list").textContent = "ニュースの取得に失敗しました";
+    document.getElementById("news-list").textContent = "Failed to get news.";
   });
 
   function getClientInfo() {
