@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WhoAmI Net</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <h1>System Time (JTC)</h1>
+  <div id="clock">--:--:--</div>
+
+  <h1>Latest News（Japan）</h1>
+  <ul id="news-list">Loading...</ul>
+
+  <p id="weather">Loading...</p>
+
+  <div id="whoami">Loading user info...</div>
+
+  <h1>Your Address</h1>
+  <p id="ip">Loading...</p>
+
+  <button id="toggleDark">Toggle Dark Mode</button>
+
+  <script>
+  fetch('https://api.ipify.org?format=json')
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('ip').textContent = data.ip;
+  })
+  .catch(err => {
+    document.getElementById('ip').textContent = 'Error fetching IP';
+    console.error(err);
+  });
+  </script>
+  <script src="/tokyo-weather/script.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
+
+
