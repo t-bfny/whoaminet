@@ -36,7 +36,7 @@ fetch(newsUrl)
       const a = document.createElement("a");
       a.href = article.url;
       a.textContent = article.title;
-      a.target = "_blank";
+      a.target = "_blank";;
       item.appendChild(a);
       list.appendChild(item);
     });
