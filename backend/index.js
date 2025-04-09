@@ -2,6 +2,8 @@ const express = require('express');
 const fetch = require('node-fetch');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const cors = require('cors');
+app.use(cors()); // ← これでCORSが有効になります
 
 app.get('/', (req, res) => {
   res.send('Hello from your API server!');
