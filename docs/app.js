@@ -1,12 +1,12 @@
-
+/* == fetch from render == */
 
 fetch('https://whoaminet.onrender.com/news')
   .then(res => res.json())
   .then(data => console.log(data));
 
-
-const NEWS_API_KEY = "efecff3b5b1244a5b71f4ed4c5d22de8";
-const newsUrl = `https://newsapi.org/v2/everything?q=japan&language=en&apiKey=${NEWS_API_KEY}`;
+  fetch('https://whoaminet.onrender.com/weather')
+  .then(res => res.json())
+  .then(data => console.log(data));
 
 /* == clock == */
 function updateClock() {
@@ -31,9 +31,9 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock(); // ページ読み込み時に即表示
 
-/* == using news API == */
+/* == Using news API == */
 
-fetch(newsUrl)
+fetch('https://whoaminet.onrender.com/news')
   .then(res => res.json())
   .then(data => {
     const list = document.getElementById("news-list");
@@ -53,6 +53,38 @@ fetch(newsUrl)
     document.getElementById("news-list").textContent = "Failed to get news.";
   });
 
+  /* == Using weather API==*/
+
+  fetch('https://whoaminet.onrender.com/weather')
+  .then(res => res.json())
+  .then(data => {
+    const temp = data.main.temp;
+    const feels = data.main.feels_like;
+    const humidity = data.main.humidity;
+    const pressure = data.main.pressure;
+    const windSpeed = data.wind.speed;
+    const desc = data.weather[0].description;
+
+    document.getElementById('weather').innerHTML = `
+      <h1>Weather (Tokyo)</h1>
+      <ul>
+        <li><strong>Description:</strong> ${desc}</li>
+        <li><strong>Temperature:</strong> ${temp} °C</li>
+        <li><strong>Feels Like:</strong> ${feels} °C</li>
+        <li><strong>Humidity:</strong> ${humidity} %</li>
+        <li><strong>Pressure:</strong> ${pressure} hPa</li>
+        <li><strong>Wind Speed:</strong> ${windSpeed} m/s</li>
+      </ul>
+    `;
+  })
+  .catch(err => {
+    document.getElementById("weather").textContent = "Failed to load weather data.";
+    console.error(err);
+  });
+
+
+  /* == System infomation == */
+
   function getClientInfo() {
     const info = {
       platform: navigator.platform,
@@ -62,14 +94,12 @@ fetch(newsUrl)
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
     };
   
-    // 簡易ブラウザ名抽出
     const browserMatch = info.userAgent.match(/(Firefox|Chrome|Safari|Edge)\/([\d.]+)/);
     if (browserMatch) {
       info.browser = `${browserMatch[1]} ${browserMatch[2]}`;
     } else {
       info.browser = "Unknown";
     }
-  
     return info;
   }
   
