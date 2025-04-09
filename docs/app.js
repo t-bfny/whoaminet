@@ -1,3 +1,10 @@
+
+
+fetch('https://whoaminet.onrender.com/news')
+  .then(res => res.json())
+  .then(data => console.log(data));
+
+
 const NEWS_API_KEY = "efecff3b5b1244a5b71f4ed4c5d22de8";
 const newsUrl = `https://newsapi.org/v2/everything?q=japan&language=en&apiKey=${NEWS_API_KEY}`;
 
