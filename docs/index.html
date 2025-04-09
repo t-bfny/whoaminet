@@ -8,18 +8,23 @@
 <body>
   <h1>System Time (JTC)</h1>
   <div id="clock">--:--:--</div>
-
+  
   <h1>Latest News（Japan）</h1>
   <ul id="news-list">Loading...</ul>
-
+  
   <p id="weather">Loading...</p>
-
+  
   <div id="whoami">Loading user info...</div>
-
+ 
   <h1>Your Address</h1>
   <p id="ip">Loading...</p>
 
   <button id="toggleDark">Toggle Dark Mode</button>
+
+  <!-- Get the news, weather, and ip address -->
+
+  <script src="app.js"></script> 
+  <script src="tokyo-weather/script.js"></script>
 
   <script>
   fetch('https://api.ipify.org?format=json')
@@ -32,11 +37,6 @@
     console.error(err);
   });
   </script>
-  <script>fetch('https://whoaminet.onrender.com/weather')  // ← RenderのURL
-  </script>
-  <script src="/tokyo-weather/script.js"></script>
-  <script src="app.js"></script>
-
 </body>
 </html>
 
