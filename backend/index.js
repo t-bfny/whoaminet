@@ -1,9 +1,12 @@
+<<<<<<< HEAD
 
 require('dotenv').config();
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const NEWS_API_KEY = process.env.NEWS_API_KEY;
 
 
+=======
+>>>>>>> 6431e751a326d0a679cd96bb2609cb8919274183
 const express = require('express');
 const fetch = require('node-fetch');
 const app = express();
@@ -38,4 +41,8 @@ app.get('/news', async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 6431e751a326d0a679cd96bb2609cb8919274183
