@@ -1,3 +1,9 @@
+
+require('dotenv').config();
+const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
+const NEWS_API_KEY = process.env.NEWS_API_KEY;
+
+
 const express = require('express');
 const fetch = require('node-fetch');
 const app = express();
